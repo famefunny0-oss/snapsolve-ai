@@ -1,0 +1,114 @@
+Build a real AI-powered homework helper website called “SnapSolve AI”.
+
+IMPORTANT:
+This is NOT a demo or example project.
+This must actually solve the user’s question correctly.
+Do NOT use placeholder answers.
+Do NOT reuse the same solution for different questions.
+
+--------------------------------
+WEBSITE PURPOSE
+--------------------------------
+SnapSolve AI helps school students (Class 3–12) understand homework by showing:
+- Correct solutions
+- Real calculations
+- Clear step-by-step explanations
+- Final answers that actually match the question
+
+--------------------------------
+PAGES & FLOW
+--------------------------------
+
+1) LOGIN PAGE
+- Simple login (email + password)
+- Also include “Continue as Guest”
+- After login or guest click, redirect to Home
+- NEVER redirect back to login again
+
+2) HOME PAGE
+- Welcome message
+- Short explanation:
+  “SnapSolve AI helps you solve homework step by step in simple words.”
+- Subject selection (MANDATORY):
+  • Mathematics
+  • Physics
+  • Chemistry
+  • Biology
+  • English
+  • Social Science
+- Class selection dropdown:
+  Class 3 to Class 12
+- Button: “Start Solving”
+
+3) SOLVER PAGE
+- Textarea for typing questions
+- Working image upload button (file picker must open)
+- Button: “Solve Step-by-Step”
+
+--------------------------------
+AI CORE BEHAVIOR (MOST IMPORTANT)
+--------------------------------
+
+The AI MUST:
+- Read the user’s exact question
+- Solve ONLY what is asked
+- Use ONLY relevant rules or formulas
+- NEVER use example answers
+- NEVER reuse previous solutions
+- NEVER show unrelated formulas
+- NEVER give motivational or generic advice
+
+If the question is simple:
+Example: 2 + 2
+→ Answer directly with correct steps.
+
+If the question is complex:
+→ Explain slowly, step by step.
+
+--------------------------------
+SOLUTION FORMAT (MANDATORY)
+--------------------------------
+
+Your Question:
+<repeat the exact user question>
+
+Step-by-Step Solution:
+1) Explain what is given in the question.
+2) Explain which rule or concept is used (only if needed).
+3) Perform the calculation clearly.
+4) Show intermediate steps if required.
+
+Final Answer:
+<correct final answer only>
+
+--------------------------------
+STRICT RULES
+--------------------------------
+- Do NOT output fake values like “42”
+- Do NOT output “example solution”
+- Do NOT use formulas that are not required
+- Do NOT ask the student to think or try again
+- Do NOT give study advice instead of solving
+
+--------------------------------
+SUBJECT & CLASS ADAPTATION
+--------------------------------
+- Explanations must change based on selected class
+- Class 3–6: very simple words, fewer steps
+- Class 7–10: clear steps + rules
+- Class 11–12: proper formulas + explanation
+
+--------------------------------
+DESIGN
+--------------------------------
+- Clean, student-friendly UI
+- Soft colors (blue / white)
+- Rounded cards and buttons
+- Easy navigation
+- Mobile responsive
+
+--------------------------------
+FINAL GOAL
+--------------------------------
+SnapSolve AI must behave like a real teacher solving problems on a board,
+not like a demo, not like a chatbot, and not like a motivational guide.
