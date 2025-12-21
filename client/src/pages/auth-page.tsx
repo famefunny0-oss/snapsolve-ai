@@ -54,7 +54,7 @@ export default function AuthPage() {
 
         <div className="max-w-md text-center z-10">
           <div className="mb-6 flex justify-center">
-            <img src={logoPath} alt="SnapSolve AI" className="w-16 h-16" />
+            <img src={logoPath} alt="SnapSolve AI" className="w-20 h-20" />
           </div>
           <h1 className="text-5xl font-display font-bold mb-6">SnapSolve AI</h1>
           <p className="text-xl text-blue-50 leading-relaxed font-light">
@@ -68,7 +68,7 @@ export default function AuthPage() {
         <div className="w-full max-w-md space-y-6">
           <div className="flex items-center justify-between lg:hidden mb-8">
              <h1 className="text-2xl font-display font-bold text-primary flex items-center gap-2">
-               <img src={logoPath} alt="SnapSolve AI" className="w-7 h-7" /> SnapSolve AI
+               <img src={logoPath} alt="SnapSolve AI" className="w-8 h-8" /> SnapSolve AI
              </h1>
              <button
                onClick={() => setLocation("/")}

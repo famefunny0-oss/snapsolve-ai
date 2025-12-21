@@ -20,7 +20,7 @@ export function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/home" className="flex items-center gap-2 group cursor-pointer">
           <div className="bg-primary/10 p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
-            <img src={logoPath} alt="SnapSolve AI" className="w-6 h-6" />
+            <img src={logoPath} alt="SnapSolve AI" className="w-7 h-7" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight text-foreground">
             Snap<span className="text-primary">Solve</span> AI

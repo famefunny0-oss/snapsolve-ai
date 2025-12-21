@@ -25,7 +25,7 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <img src={logoPath} alt="SnapSolve AI" className="w-8 h-8" />
+            <img src={logoPath} alt="SnapSolve AI" className="w-10 h-10" />
             <h1 className="text-xl font-bold text-gray-900">SnapSolve AI</h1>
           </motion.div>
         </div>
