@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
 
 import NotFound from "@/pages/not-found";
+import LandingPage from "@/pages/landing-page";
 import AuthPage from "@/pages/auth-page";
 import HomePage from "@/pages/home-page";
 import SolverPage from "@/pages/solver-page";
@@ -24,7 +25,7 @@ function ProtectedRoute({ component: Component }: { component: React.ComponentTy
   }
 
   if (!user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/auth" />;
   }
 
   return <Component />;
@@ -44,6 +45,10 @@ function Router() {
   return (
     <Switch>
       <Route path="/">
+        {user ? <Redirect to="/home" /> : <LandingPage />}
+      </Route>
+
+      <Route path="/auth">
         {user ? <Redirect to="/home" /> : <AuthPage />}
       </Route>
       

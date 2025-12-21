@@ -5,14 +5,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { insertUserSchema, type InsertUser } from "@shared/routes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Sparkles, ArrowRight, BookOpen, GraduationCap, Calculator } from "lucide-react";
+import { Sparkles, BookOpen, GraduationCap, Calculator, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
 export default function AuthPage() {
   const { login, register, guestLogin, isPending } = useAuth();
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState("login");
 
   const formSchema = insertUserSchema;
@@ -64,11 +66,18 @@ export default function AuthPage() {
 
       {/* Right Panel - Forms */}
       <div className="flex items-center justify-center p-6 bg-background">
-        <div className="w-full max-w-md space-y-8">
-          <div className="text-center lg:hidden mb-8">
-             <h1 className="text-3xl font-display font-bold text-primary flex items-center justify-center gap-2">
+        <div className="w-full max-w-md space-y-6">
+          <div className="flex items-center justify-between lg:hidden mb-8">
+             <h1 className="text-2xl font-display font-bold text-primary flex items-center gap-2">
                <Sparkles className="w-6 h-6" /> SnapSolve AI
              </h1>
+             <button
+               onClick={() => setLocation("/")}
+               className="text-muted-foreground hover:text-foreground transition-colors"
+               aria-label="Back to home"
+             >
+               <ArrowLeft className="w-5 h-5" />
+             </button>
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -186,10 +195,18 @@ export default function AuthPage() {
             className="w-full h-12 rounded-xl border-2 hover:bg-secondary/50"
             onClick={() => guestLogin()}
             disabled={isPending}
+            data-testid="button-guest-login"
           >
             <GraduationCap className="mr-2 w-5 h-5" />
-            Guest Student
+            Continue as Guest
           </Button>
+
+          <button
+            onClick={() => setLocation("/")}
+            className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+          >
+            ← Back to home
+          </button>
         </div>
       </div>
     </div>
