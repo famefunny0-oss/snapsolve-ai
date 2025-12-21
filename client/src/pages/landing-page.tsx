@@ -2,113 +2,80 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Sparkles, Zap, BookOpen, CheckCircle2, ArrowRight, Lightbulb } from "lucide-react";
+import { Zap, BookOpen, CheckCircle2, ArrowRight, Lightbulb, Sparkles } from "lucide-react";
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
 
   const features = [
-    { icon: Lightbulb, label: "Smart Explanations", description: "AI-powered step-by-step solutions" },
-    { icon: Zap, label: "Step-by-Step", description: "Learn the concepts behind each step" },
-    { icon: CheckCircle2, label: "Instant Results", description: "Get answers in seconds" },
+    { icon: Lightbulb, label: "Smart Explanations" },
+    { icon: Zap, label: "Step-by-Step" },
+    { icon: CheckCircle2, label: "Instant Results" },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-secondary/20">
-      {/* Navigation */}
-      <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
-        <div className="flex items-center gap-2">
-          <div className="bg-primary/10 p-2 rounded-lg">
-            <Sparkles className="w-6 h-6 text-primary" />
-          </div>
-          <span className="text-2xl font-display font-bold text-foreground">SnapSolve AI</span>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50">
+      {/* Top Badge */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="flex justify-center pt-8"
+      >
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100/50 border border-green-200">
+          <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          <span className="text-sm font-medium text-green-700">AI-Powered Homework Helper</span>
         </div>
-      </nav>
+      </motion.div>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center py-20 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center py-16 lg:py-24">
           {/* Left Section */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-8"
           >
-            <div className="space-y-6">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight"
-              >
-                Homework just got easier.
-              </motion.h1>
+            <div className="space-y-4">
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+                Homework just got{" "}
+                <span className="text-blue-600">easier.</span>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-lg text-muted-foreground max-w-lg leading-relaxed"
-              >
-                SnapSolve AI helps you understand homework step by step. Get instant explanations, work through problems like your teacher would, and master any subject.
-              </motion.p>
+              <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
+                SnapSolve understands your questions and explains the solution step-by-step, just like a tutor. Perfect for Class 3 to 12.
+              </p>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-            >
+            {/* Buttons */}
+            <div className="flex items-center gap-4 pt-4">
               <Button
                 size="lg"
-                className="h-14 px-8 text-lg rounded-xl font-semibold group"
+                className="h-12 px-8 text-base rounded-lg font-semibold bg-blue-600 hover:bg-blue-700 group"
                 onClick={() => setLocation("/auth")}
               >
                 Get Started
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </motion.div>
+            </div>
 
             {/* Features Grid */}
             <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
               className="grid grid-cols-3 gap-4 pt-8"
             >
               {features.map((feature, idx) => {
                 const Icon = feature.icon;
                 return (
-                  <motion.div key={idx} variants={itemVariants} className="space-y-3">
-                    <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-primary" />
+                  <div key={idx} className="flex flex-col items-center gap-2 text-center">
+                    <div className="text-gray-600">
+                      <Icon className="w-6 h-6" />
                     </div>
-                    <div>
-                      <p className="font-semibold text-sm text-foreground">{feature.label}</p>
-                      <p className="text-xs text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </motion.div>
+                    <p className="font-medium text-sm text-gray-700">{feature.label}</p>
+                  </div>
                 );
               })}
             </motion.div>
@@ -116,74 +83,73 @@ export default function LandingPage() {
 
           {/* Right Section - Demo Card */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="relative"
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="relative flex justify-center lg:justify-end"
           >
-            {/* Floating Background Elements */}
-            <div className="absolute -top-8 -right-8 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 -left-8 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
-
-            <Card className="relative z-10 p-8 shadow-xl border-0 bg-card">
+            <Card className="w-full max-w-sm bg-white shadow-2xl border-0 p-6">
               <div className="space-y-6">
-                <div className="bg-secondary/50 p-4 rounded-lg">
-                  <p className="text-sm font-medium text-muted-foreground mb-3">Example Problem</p>
-                  <p className="text-lg font-semibold text-foreground">
-                    If 2x + 5 = 17, what is x?
-                  </p>
+                {/* Problem Header */}
+                <div className="flex items-start gap-3 pb-4 border-b border-gray-200">
+                  <div className="flex items-center gap-1.5 flex-shrink-0 pt-1">
+                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                    <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Math Problem</p>
+                    <p className="text-sm font-semibold text-gray-900 mt-1">Class 8 • Algebra</p>
+                  </div>
                 </div>
 
-                <div className="space-y-4 border-t border-border pt-6">
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                        <span className="text-xs font-bold text-primary">1</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm text-foreground">Isolate the variable term</p>
-                        <p className="text-sm text-muted-foreground mt-1">Subtract 5 from both sides: 2x = 17 - 5</p>
-                      </div>
-                    </div>
+                {/* Problem Statement */}
+                <div>
+                  <p className="text-gray-700 font-medium">Solve for x: 2x + 5 = 15</p>
+                </div>
 
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                        <span className="text-xs font-bold text-primary">2</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm text-foreground">Simplify</p>
-                        <p className="text-sm text-muted-foreground mt-1">2x = 12</p>
-                      </div>
+                {/* Solution Steps */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-bold text-blue-600">1</span>
                     </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Subtract 5 from both sides</p>
+                      <p className="text-sm text-gray-600 mt-1">2x = 15 - 5</p>
+                    </div>
+                  </div>
 
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                        <span className="text-xs font-bold text-primary">3</span>
-                      </div>
-                      <div>
-                        <p className="font-medium text-sm text-foreground">Solve for x</p>
-                        <p className="text-sm text-muted-foreground mt-1">Divide both sides by 2: x = 6</p>
-                      </div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-bold text-blue-600">2</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Simplify the right side</p>
+                      <p className="text-sm text-gray-600 mt-1">2x = 10</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-bold text-blue-600">3</span>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Divide both sides by 2</p>
+                      <p className="text-sm text-gray-600 mt-1">x = 5</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="border-t border-border pt-6 bg-primary/5 p-4 rounded-lg">
-                  <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Final Answer</p>
-                  <p className="text-2xl font-bold text-primary">x = 6</p>
+                {/* Final Answer */}
+                <div className="border-t border-gray-200 pt-4 bg-blue-50 p-4 rounded-lg">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Final Answer</p>
+                  <p className="text-2xl font-bold text-blue-600">x = 5</p>
                 </div>
               </div>
             </Card>
           </motion.div>
         </div>
       </main>
-
-      {/* Footer */}
-      <div className="border-t border-border mt-20">
-        <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-muted-foreground">
-          <p>SnapSolve AI • Making homework easier for students everywhere</p>
-        </footer>
-      </div>
     </div>
   );
 }
