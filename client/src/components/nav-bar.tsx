@@ -1,8 +1,9 @@
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
-import { LogOut, Sparkles, User as UserIcon } from "lucide-react";
+import { LogOut, User as UserIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import logoPath from "@assets/9569bd71-d15d-4c6e-9718-c912f5bc9e2d_1766322178971.png";
 
 export function NavBar() {
   const { user, logout } = useAuth();
@@ -19,7 +20,7 @@ export function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link href="/home" className="flex items-center gap-2 group cursor-pointer">
           <div className="bg-primary/10 p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
-            <Sparkles className="w-5 h-5 text-primary" />
+            <img src={logoPath} alt="SnapSolve AI" className="w-5 h-5" />
           </div>
           <span className="font-display font-bold text-xl tracking-tight text-foreground">
             Snap<span className="text-primary">Solve</span> AI

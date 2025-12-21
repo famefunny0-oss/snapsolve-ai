@@ -8,9 +8,10 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Sparkles, BookOpen, Calculator, ArrowLeft } from "lucide-react";
+import { BookOpen, Calculator, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import logoPath from "@assets/9569bd71-d15d-4c6e-9718-c912f5bc9e2d_1766322178971.png";
 
 export default function AuthPage() {
   const { login, register, isPending } = useAuth();
@@ -53,9 +54,7 @@ export default function AuthPage() {
 
         <div className="max-w-md text-center z-10">
           <div className="mb-6 flex justify-center">
-            <div className="bg-white/20 p-4 rounded-3xl backdrop-blur-md">
-              <Sparkles className="w-12 h-12 text-white" />
-            </div>
+            <img src={logoPath} alt="SnapSolve AI" className="w-12 h-12" />
           </div>
           <h1 className="text-5xl font-display font-bold mb-6">SnapSolve AI</h1>
           <p className="text-xl text-blue-50 leading-relaxed font-light">
@@ -69,7 +68,7 @@ export default function AuthPage() {
         <div className="w-full max-w-md space-y-6">
           <div className="flex items-center justify-between lg:hidden mb-8">
              <h1 className="text-2xl font-display font-bold text-primary flex items-center gap-2">
-               <Sparkles className="w-6 h-6" /> SnapSolve AI
+               <img src={logoPath} alt="SnapSolve AI" className="w-6 h-6" /> SnapSolve AI
              </h1>
              <button
                onClick={() => setLocation("/")}

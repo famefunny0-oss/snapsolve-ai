@@ -2,7 +2,8 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Zap, BookOpen, CheckCircle2, ArrowRight, Lightbulb, Sparkles } from "lucide-react";
+import { Zap, BookOpen, CheckCircle2, ArrowRight, Lightbulb } from "lucide-react";
+import logoPath from "@assets/9569bd71-d15d-4c6e-9718-c912f5bc9e2d_1766322178971.png";
 
 export default function LandingPage() {
   const [, setLocation] = useLocation();
@@ -24,7 +25,7 @@ export default function LandingPage() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2"
           >
-            <Sparkles className="w-6 h-6 text-blue-600" />
+            <img src={logoPath} alt="SnapSolve AI" className="w-6 h-6" />
             <h1 className="text-xl font-bold text-gray-900">SnapSolve AI</h1>
           </motion.div>
         </div>
