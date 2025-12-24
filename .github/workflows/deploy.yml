@@ -24,6 +24,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: snapsolve-ai
-          directory: .
+          directory: client
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
