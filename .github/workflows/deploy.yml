@@ -25,10 +25,32 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build application
+      - name: Build client
         run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: List dist contents
+        run: |
+          echo "Checking for dist folder..."
+          ls -la
+          if [ -d "dist" ]; then
+            echo "dist folder found:"
+            ls -la dist/
+          elif [ -d "client/dist" ]; then
+            echo "client/dist folder found:"
+            ls -la client/dist/
+            mv client/dist ./dist
+          elif [ -d "build" ]; then
+            echo "build folder found:"
+            ls -la build/
+            mv build ./dist
+          else
+            echo "No dist/build folder found. Using client folder as fallback."
+            cp -r client ./dist
+          fi
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
