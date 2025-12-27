@@ -1,11 +1,11 @@
-// Version 2.0 - Backend integrationimport { Switch, Route, Redirect } from "wouter";
+// Version 2.0 - Backend integration
+import { Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/use-auth";
 import { Loader2 } from "lucide-react";
-
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing-page";
 import AuthPage from "@/pages/auth-page";
@@ -43,11 +43,11 @@ function Router() {
   }
 
   return (
-    <Switch>
+    <>
       <Route path="/">
         {user ? <Redirect to="/home" /> : <LandingPage />}
       </Route>
-
+      
       <Route path="/auth">
         {user ? <Redirect to="/home" /> : <AuthPage />}
       </Route>
@@ -60,9 +60,8 @@ function Router() {
         <ProtectedRoute component={SolverPage} />
       </Route>
 
-      {/* Fallback to 404 */}
-      <Route component={NotFound} />
-    </Switch>
+      <Route path="/:rest*" component={NotFound} />
+    </>
   );
 }
 
