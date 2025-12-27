@@ -3,6 +3,9 @@ import { api, type InsertUser } from "@shared/routes";
 import { useLocation } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 
+// Get API base URL - same as in queryClient.ts
+const API_BASE_URL = "https://snap-solve-ai--cineai13690.replit.app";
+
 export function useAuth() {
   const queryClient = useQueryClient();
   const [, setLocation] = useLocation();
@@ -11,7 +14,7 @@ export function useAuth() {
   const { data: user, isLoading } = useQuery({
     queryKey: [api.auth.me.path],
     queryFn: async () => {
-      const res = await fetch(api.auth.me.path);
+      const res = await fetch(API_BASE_URL + api.auth.me.path);
       if (res.status === 401) return null;
       if (!res.ok) throw new Error("Failed to fetch user");
       return await res.json();
@@ -21,10 +24,11 @@ export function useAuth() {
 
   const loginMutation = useMutation({
     mutationFn: async (credentials: InsertUser) => {
-      const res = await fetch(api.auth.login.path, {
+      const res = await fetch(API_BASE_URL + api.auth.login.path, {
         method: api.auth.login.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
+        credentials: "include",
       });
       if (!res.ok) {
         const error = await res.json();
@@ -48,10 +52,11 @@ export function useAuth() {
 
   const registerMutation = useMutation({
     mutationFn: async (credentials: InsertUser) => {
-      const res = await fetch(api.auth.register.path, {
+      const res = await fetch(API_BASE_URL + api.auth.register.path, {
         method: api.auth.register.method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
+        credentials: "include",
       });
       if (!res.ok) {
         const error = await res.json();
@@ -75,8 +80,9 @@ export function useAuth() {
 
   const guestLoginMutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch(api.auth.guest.path, {
+      const res = await fetch(API_BASE_URL + api.auth.guest.path, {
         method: api.auth.guest.method,
+        credentials: "include",
       });
       if (!res.ok) throw new Error("Guest login failed");
       return await res.json();
@@ -90,7 +96,10 @@ export function useAuth() {
 
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      await fetch(api.auth.logout.path, { method: api.auth.logout.method });
+      await fetch(API_BASE_URL + api.auth.logout.path, { 
+        method: api.auth.logout.method,
+        credentials: "include",
+      });
     },
     onSuccess: () => {
       queryClient.setQueryData([api.auth.me.path], null);
