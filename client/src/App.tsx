@@ -1,4 +1,4 @@
-// Version 2.0 - Backend integration
+// Version 2.1 - Backend integration with CORS
 import { Route, Redirect } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
